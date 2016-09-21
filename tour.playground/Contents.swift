@@ -224,5 +224,126 @@ let sortedNumber = resultNumberX.sorted(by: {$0 > $1})
 print(sortedNumber)
 
 
+class Person{
+    private var _name: String?
+    
+    init(){
+        
+    }
+    
+    init(name: String){
+        self.name = name
+    }
+    
+    var name: String {
+        set{
+            self._name = newValue
+        }
+        
+        get{
+            return self._name ?? "no name"
+        }
+    }
+}
+
+var p1 = Person()
+var p2 = Person(name: "Jonh")
+
+print(p1.name)
+print(p2.name)
+
+
+
+enum Rank: Int{
+    case OPS = 2
+    case TWO, THREE, FOUR, FIVE, SIX, SEVEN
+    
+    func toName() -> String {
+        switch self {
+        case .FIVE:
+            return "five"
+        default:
+            return "name"
+        }
+      
+    }
+    
+    func equals(rank: Rank) -> Bool {
+        return self.rawValue == rank.rawValue
+    }
+}
+
+Rank.OPS.rawValue
+Rank.FIVE.toName()
+
+
+struct Card{
+    
+    func fullName() -> String {
+        return "name"
+    }
+}
+
+let card = Card()
+card.fullName()
+
+
+
+enum ServerResponse{
+    case Result(String, String)
+    case Error(String)
+}
+
+let successEnum = ServerResponse.Result("ok", "success")
+
+switch successEnum {
+case .Result:
+    print("xxxx")
+default:
+    print("aaaa")
+}
+
+
+//protocol its looks like an interface in Java
+
+protocol Eatable {
+    
+    func name()
+}
+
+class Banana : Eatable {
+    
+    init() {
+    }
+    
+    internal func name() {
+        print("its a banana")
+    }
+}
+
+var banana = Banana()
+banana.name()
+
+//Extensions add new funtinality
+extension Int: Eatable {
+    internal func name() {
+        print("int extensions")
+    }
+}
+
+7.name()
+
+
+func repeatItem<T>(fruit:T, numberOfTimes: Int) -> [T] where T: Eatable {
+    
+    var result = [T]()
+    for _ in 0..<numberOfTimes {
+        var element = T()
+        result.append(element)
+    }
+    
+    return result
+}
+
 
 
