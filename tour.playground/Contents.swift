@@ -99,6 +99,11 @@ for i in 0 ..< 100 {
     }
 }
 
+//C like for is deprecated in swift 3
+for var i=1; i < 10; i += 1 {
+    print("the number is \(i)")
+}
+
 func calculateStatistics(numbers: [Int]) -> (min: Int, max: Int, sum: Int) {
     var min = numbers[0]
     var max = numbers[0]
@@ -120,7 +125,7 @@ func calculateStatistics(numbers: [Int]) -> (min: Int, max: Int, sum: Int) {
 }
 
 
-var resultStatistics = calculateStatistics(numbers: [1,2,3,4,5,6,7,8])
+var resultStatistics = calculateStatistics([1,2,3,4,5,6,7,8])
 
 
 
@@ -151,8 +156,8 @@ func averageOf(numbers: Int...) -> Int {
 }
 
 sumOf()
-var resultSumOf = sumOf(numbers: 1,2,3,4)
-var averageOfR = averageOf(numbers: 1,2,3,4)
+var resultSumOf = sumOf(1,2,3,4)
+var averageOfR = averageOf(1,2,3,4)
 
 //nested functions
 func fatorial(number: Int) -> Int {
@@ -162,13 +167,13 @@ func fatorial(number: Int) -> Int {
         if(number == 0){
             return sum
         }else{
-            return calculateFatorial(number: (number - 1), sum: sum * number)
+            return calculateFatorial((number - 1), sum: sum * number)
         }
     }
-    return calculateFatorial(number: number, sum: 1)
+    return calculateFatorial(number, sum: 1)
 }
 
-var resultFatorial = fatorial(number: 5)
+var resultFatorial = fatorial(5)
 
 print(resultFatorial)
 
@@ -204,10 +209,10 @@ func isEven(number: Int) -> Bool {
     return number % 2 == 0 ? true : false
 }
 
-hasAnyEvenValue(list: numbersX, condition: isEven)
+hasAnyEvenValue(numbersX, condition: isEven)
 print("-------")
 //with closure {(n: Int) -> Bool in }
-hasAnyEvenValue(list: numbersX, condition: {(n: Int) -> Bool in
+hasAnyEvenValue(numbersX, condition: {(n: Int) -> Bool in
     if(n % 2 == 0){
         return true
     }else{
@@ -220,7 +225,7 @@ var resultNumberX = numbersX.map({n in n * 2})
 
 print(resultNumberX)
 
-let sortedNumber = resultNumberX.sorted(by: {$0 > $1})
+let sortedNumber = resultNumberX.sort({$1 > $0})
 print(sortedNumber)
 
 
@@ -334,15 +339,46 @@ extension Int: Eatable {
 7.name()
 
 
-func repeatItem<T>(fruit:T, numberOfTimes: Int) -> [T] where T: Eatable {
-    
-    var result = [T]()
-    for _ in 0..<numberOfTimes {
-        var element = T()
-        result.append(element)
+//func repeatItem<T>(fruit:T, numberOfTimes: Int) -> [T] where T: Eatable {
+//    
+//    var result = [T] ()
+//    for _ in 0..<numberOfTimes {
+//        var element = T()
+//        result.append(element)
+//    }
+//    
+//    return result
+//}
+
+
+//WORKING WITH TUPLES
+
+let httpResponse = (404, "Not Found")
+
+let httpResponseError = (code: 404,message: "Not Found")
+
+httpResponseError.code
+
+//OPTIONAL
+
+let possibleNumber = "123"
+let wrongStringNumber = "asbc"
+let numberA = Int(possibleNumber)
+let numberB: Int? = Int(wrongStringNumber)
+
+if let xb = numberB{
+    print("there is a number")
+}else{
+    print("doesn't have a number")
+}
+
+
+func functionThatMayThrowsAnError() throws {
+    do{
+        try functionThatMayThrowsAnError()
+    }catch{
+        
     }
-    
-    return result
 }
 
 
