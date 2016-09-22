@@ -51,7 +51,7 @@
 
 The assignment operator (a = b) initializes or updates the value of a with the value o b
 
-```
+```swift
 let b = 10
 var a = 5
 a = b
@@ -61,7 +61,7 @@ a = b
 
 Creating a tuple
 
-```
+```swift
 let (x, y) = (1,2)
 // x is equal to 1, y is equal to 2
 
@@ -69,7 +69,7 @@ let (x, y) = (1,2)
 
 String concatenation
 
-```
+```swift
 "Hello" + " World"
 
 ```
@@ -78,21 +78,21 @@ String concatenation
 
 Also known as 'short circuit evaluation'
 
-```
+```swift
 a != nil ? a! : b
 
 ```
 
 shorthand:
 
-```
+```swift
 var c = a ?? b
 
 ```
 
 e.g.:
 
-```
+```swift
 let defaultColorName = "Red"
 var userDefaultColorName: String?
 
@@ -105,7 +105,7 @@ var colorNameToUse = userDefaultColorName ?? defaultColorName
 
 The closed range operator (a...b) defines a range that runs from a to b, and includes the values a and b. The value of a must not be greater than b.
 
-```
+```swift
 for index in 1...5 {
 	print("index \(index)")
 }
@@ -116,7 +116,7 @@ for index in 1...5 {
 
 A range that runs from a to b, but does not include b.
 
-```
+```swift
 let names = ["Anna", "Alex", "Brian", "Jack"]
 let count = names.count
 for i in 0..<count {
